@@ -26,11 +26,15 @@
       {{ s.status }}
     </span>
 
-    <div class="actions" *ngIf="s.status !== 'refusee'">
-      <button class="btn-like" (click)="likeSuggestion(s)">👍 Like</button>
-      <button class="btn-favorite" (click)="addToFavorites(s)">⭐ Favoris</button>
-    </div>
-  </div>
+    <div class="actions">
+  <ng-container *ngIf="s.status !== 'refusee'">
+    <button class="btn-like" (click)="likeSuggestion(s)">👍 Like</button>
+    <button class="btn-favorite" (click)="addToFavorites(s)">⭐ Favoris</button>
+  </ng-container>
+
+  <button class="btn-details" (click)="goDetails(s)">👁️ Voir détails</button>
+</div>
+    
 
   <div class="favorites-section">
     <h2>Suggestions favorites</h2>
@@ -39,4 +43,5 @@
     </ul>
     <p *ngIf="favorites.length === 0">Aucune suggestion favorite pour le moment.</p>
   </div>
+  
 </div>

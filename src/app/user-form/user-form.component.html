@@ -1,0 +1,11 @@
+<form [formGroup]="userForm" (ngSubmit)="adduser()">
+    <label for="email"> Email:</label>
+    <div *ngIf="email?.touched && email?.invalid" style="color:red;">Email invalid
+        <p *ngIf="email?.errors?.['required']">Email is required</p>
+        <p *ngIf="email?.errors?.['email']">Please enter a valid mail address</p>
+    </div>     
+    <input formControlName="email">
+    <label for="city"> City:</label>
+    <input formControlName="city">
+    <button type="submit">Submit</button>
+</form>

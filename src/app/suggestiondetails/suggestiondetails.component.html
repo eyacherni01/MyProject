@@ -1,0 +1,13 @@
+<div class="details-container">
+  <h2>Détails de la suggestion</h2>
+
+  <p><strong>ID :</strong> {{ id }}</p>
+  <p><strong>Titre :</strong> {{ title }}</p>
+  <p><strong>Description :</strong> {{ description }}</p>
+  <p><strong>Catégorie :</strong> {{ category }}</p>
+  <p><strong>Date :</strong> {{ date | date:'dd/MM/yyyy' }}</p>
+  <p><strong>Status :</strong> {{ status }}</p>
+  <p><strong>Likes :</strong> {{ nbLikes }}</p>
+
+  <button routerLink="/listsugg">⬅ Retour</button>
+</div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Suggestion } from '../../models/suggestion';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-list-suggestion',
@@ -7,6 +9,8 @@ import { Suggestion } from '../../models/suggestion';
   styleUrl: './list-suggestion.component.css'
 })
 export class ListSuggestionComponent {
+
+  constructor(private router: Router) {}
 
   searchText: string = '';
   searchCategory: string = '';
@@ -68,5 +72,17 @@ export class ListSuggestionComponent {
       s.category.toLowerCase().includes(this.searchCategory.toLowerCase())
     );
   }
+goDetails(s: Suggestion) {
+  this.router.navigate(['/suggDetails', s.id], {
+    queryParams: {
+      title: s.title,
+      description: s.description,
+      category: s.category,
+      date: s.date.toISOString(),
+      status: s.status,
+      nbLikes: s.nbLikes
+    }
+  });
+}
 
 }
