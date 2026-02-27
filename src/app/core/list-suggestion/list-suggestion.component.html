@@ -1,6 +1,9 @@
 <div class="container">
   <h2>Liste des suggestions</h2>
 
+  <!--  Bouton ajouter suggestion -->
+  <button class="btn-add" (click)="goToAddSuggestion()">➕ Ajouter suggestion</button>
+
   <!-- Barre de recherche -->
   <div class="search-container">
     <input type="text" placeholder="Rechercher par titre" [(ngModel)]="searchText" class="search-bar">

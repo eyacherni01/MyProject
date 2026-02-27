@@ -12,6 +12,8 @@ import { SuggestiondetailsComponent } from './suggestiondetails/suggestiondetail
 import { UserFormComponent } from './user-form/user-form.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { SuggestionFormComponent } from './suggestion-form/suggestion-form.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     SuggestiondetailsComponent,
     UserFormComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    SuggestionFormComponent
   ],
   imports: [
     BrowserModule,

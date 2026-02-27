@@ -3,6 +3,7 @@ import { Suggestion } from '../../models/suggestion';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-list-suggestion',
   templateUrl: './list-suggestion.component.html',
@@ -55,6 +56,12 @@ export class ListSuggestionComponent {
       nbLikes: 0
     }
   ];
+
+  
+
+  goToAddSuggestion() {
+    this.router.navigate(['/suggestion-form']);
+  }
 
   likeSuggestion(s: Suggestion) {
     s.nbLikes++;

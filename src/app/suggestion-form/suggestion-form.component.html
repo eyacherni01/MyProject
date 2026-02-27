@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Ajouter une suggestion</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <label>Titre</label>
+    <input type="text" formControlName="title">
+    <div class="error" *ngIf="title?.touched && title?.errors?.['required']">
+      Titre obligatoire.
+    </div>
+    <div class="error" *ngIf="title?.touched && title?.errors?.['minlength']">
+      Minimum 5 caractères.
+    </div>
+    <div class="error" *ngIf="title?.touched && title?.errors?.['pattern']">
+      Doit commencer par une majuscule, uniquement des lettres.
+    </div>
+
+    <label>Description</label>
+    <textarea rows="4" formControlName="description"></textarea>
+    <div class="error" *ngIf="description?.touched && description?.errors?.['required']">
+      Description obligatoire.
+    </div>
+    <div class="error" *ngIf="description?.touched && description?.errors?.['minlength']">
+      Minimum 30 caractères.
+    </div>
+
+    <label>Catégorie</label>
+    <select formControlName="category">
+      <option value="">-- Choisir une catégorie --</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+    <div class="error" *ngIf="category?.touched && category?.errors?.['required']">
+      Catégorie obligatoire.
+    </div>
+
+    <label>Date</label>
+    <input type="date" formControlName="date" readonly>
+
+    <label>Status</label>
+    <input type="text" formControlName="status" readonly>
+
+    <!--  Désactivé tant que INVALID -->
+    <button type="submit" [disabled]="form.invalid">
+      Soumettre
+    </button>
+  </form>
+</div>
