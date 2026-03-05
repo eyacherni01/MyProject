@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Suggestion } from '../models/suggestion';
+import { SuggestionService } from '../core/Services/suggestion.service';
 
 @Component({
   selector: 'app-suggestion-form',
@@ -25,7 +26,11 @@ export class SuggestionFormComponent {
 
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private service: SuggestionService
+  ) {
     this.form = this.fb.group({
       title: ['', [
         Validators.required,
@@ -38,7 +43,7 @@ export class SuggestionFormComponent {
       ]],
       category: ['', Validators.required],
       date: [{ value: new Date().toISOString().substring(0, 10), disabled: true }],
-      status: [{ value: 'en attente', disabled: true }]
+      status: [{ value: 'en_attente', disabled: true }]
     });
   }
 
@@ -50,17 +55,17 @@ export class SuggestionFormComponent {
     if (this.form.invalid) return;
 
     const newSuggestion: Suggestion = {
-      id: 0, 
+      id: 0,
       title: this.title?.value || '',
       description: this.description?.value || '',
       category: this.category?.value || '',
       date: new Date(),
-      status: 'en attente',
+      status: 'en_attente',
       nbLikes: 0
     };
 
-    console.log('Suggestion à envoyer au service :', newSuggestion);
-
-    this.router.navigate(['/listsugg']);
+    this.service.addSuggestion(newSuggestion).subscribe(() => {
+      this.router.navigate(['/listsugg']);
+    });
   }
 }

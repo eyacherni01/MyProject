@@ -13,6 +13,8 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { SuggestionFormComponent } from './suggestion-form/suggestion-form.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -35,7 +37,7 @@ import { SuggestionFormComponent } from './suggestion-form/suggestion-form.compo
     ReactiveFormsModule 
   ],
   providers: [
-    provideClientHydration()
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent]
 })

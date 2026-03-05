@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SuggestionService } from '../core/Services/suggestion.service';
+import { Suggestion } from '../models/suggestion';
+
 
 @Component({
   selector: 'app-suggestiondetails',
@@ -9,27 +12,22 @@ import { ActivatedRoute } from '@angular/router';
 export class SuggestiondetailsComponent implements OnInit {
 
   id!: number;
+suggestion?: Suggestion;
 
-  title: string = '';
-  description: string = '';
-  category: string = '';
-  date: string = '';
-  status: string = '';
-  nbLikes: number = 0;
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: SuggestionService
+  ) {}
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-
-    // ✅ récupérer les query params
-    this.route.queryParams.subscribe(params => {
-      this.title = params['title'] || '';
-      this.description = params['description'] || '';
-      this.category = params['category'] || '';
-      this.date = params['date'] || '';
-      this.status = params['status'] || '';
-      this.nbLikes = Number(params['nbLikes'] || 0);
+    this.service.getSuggestionById(this.id).subscribe(data => {
+      this.suggestion = data;
     });
+  }
+
+  back() {
+    this.router.navigate(['/listsugg']);
   }
 }
