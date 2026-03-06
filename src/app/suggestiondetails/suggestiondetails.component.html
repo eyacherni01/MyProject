@@ -8,6 +8,8 @@
   <p><strong>Date :</strong> {{ suggestion.date | date:'dd/MM/yyyy' }}</p>
   <p><strong>Status :</strong> {{ suggestion.status }}</p>
   <p><strong>Likes :</strong> {{ suggestion.nbLikes }}</p>
-
+  
+<button class="btn-update" (click)="goUpdate()">✏ Modifier</button>
 <button class="btn-back" (click)="back()">⬅ Retour</button>
+
 </div>

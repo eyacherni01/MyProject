@@ -6,6 +6,7 @@ import { SuggestiondetailsComponent } from './suggestiondetails/suggestiondetail
 import { UserFormComponent } from './user-form/user-form.component';
 import { HomeComponent } from './home/home.component';
 import { SuggestionFormComponent } from './suggestion-form/suggestion-form.component';
+import { UpdateFormComponent } from './update-form/update-form.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'suggestion-form', component: SuggestionFormComponent },
   {path:'adduser',component:UserFormComponent},
   {path:'suggDetails/:id',component:SuggestiondetailsComponent},
+  { path: 'update-form/:id', component: UpdateFormComponent },
   {path:'**', component:NotfoundComponent}
   
   

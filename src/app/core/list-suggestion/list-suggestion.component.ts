@@ -18,7 +18,7 @@ export class ListSuggestionComponent implements OnInit {
 
   constructor(private router: Router, private service: SuggestionService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadSuggestions();
   }
 

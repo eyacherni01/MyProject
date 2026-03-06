@@ -27,6 +27,10 @@ suggestion?: Suggestion;
     });
   }
 
+  goUpdate() {
+  this.router.navigate(['/update-form', this.id]);
+}
+
   back() {
     this.router.navigate(['/listsugg']);
   }
